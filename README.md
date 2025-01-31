@@ -18,7 +18,7 @@ Ensure you have the following on your local machione:
 ## ⚡ Setup & Installation
 
 ### 1️⃣ **Clone the repository**
-Open your terminal and run: ```git clone https://github.com/theChosenDevop/HNG_12.git```
+Open your terminal and run: ```git clone https://github.com/theChosenDevop/HNG_Backend.git```
 
 ### 2️⃣ **Clone the repository**
 install packages: ```npm install```
