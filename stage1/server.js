@@ -11,7 +11,16 @@ app.use(cors());
 
 
 app.get("/api/classify-number", async (req, res) => {
-  const number = parseInt(req.query.number);
+  const num = req.query.number;
+   //  check if the query parameter is a valid number
+   if (!/^-?\d+$/.test(num)) {
+    return res.status(400).json({
+      number: "alphabet",
+      error: true,
+    });
+  }
+  // convert the query parameter to an integer
+  const number = parseInt(num, 10); 
 
 //   fetch data from numbers API
   const fetchApi = async () => {
@@ -25,13 +34,7 @@ app.get("/api/classify-number", async (req, res) => {
     }
   };
 
-//  check if the number is not a number
-  if (isNaN(number)) {
-    return res.status(400).json({
-      number: "alphabet",
-      error: true,
-    });
-  }
+
 // split the number into an array of digits
   let numArr = [...number.toString()];
 //   sum up the digits
@@ -61,5 +64,3 @@ app.get("/api/classify-number", async (req, res) => {
 
 app.listen(3000, () => console.log("Server is running on port 3000"));
 console.log(`API Response Time: ${Date.now() - start} ms`);
-
-

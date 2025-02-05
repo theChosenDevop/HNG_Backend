@@ -11,7 +11,7 @@ This is a backend service for HNG_12 project. It is built with **Node.js** and *
 ---
 
 ## Prerequisites
-Ensure you have the following on your local machione:
+Ensure you have the following on your local machine:
 - [Node.js](https://nodejs.org/) (version 16+ recommended)
 - [Git](https://git-scm.com/)
 
