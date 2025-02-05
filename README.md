@@ -20,14 +20,14 @@ Ensure you have the following on your local machione:
 ### 1️⃣ **Clone the repository**
 Open your terminal and run: ```git clone https://github.com/theChosenDevop/HNG_Backend.git```
 
-### 2️⃣ **Clone the repository**
-install packages: ```npm install```
+### 2️⃣ **Installation**
+Install packages: ```npm install```
 
-### 3️⃣ **Clone the repository**
+### 3️⃣ **Start Server**
 Run the server: ```npm start```
 
 ### 4️⃣ **Access endpoint**
-```http:\\localhost:3000"```
+```http://localhost:3000"```
 
 ### 5️⃣ **Browser output**
 ``{
