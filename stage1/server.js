@@ -17,10 +17,9 @@ app.get("/api/classify-number", async (req, res) => {
     if (num === undefined || num.trim() === "" || num === null) return false;
     if (!/^-?\d+$/.test(num.trim())) return false;
   }
-
-  const num = req.query.number;
-  //  check if the query parameter is a valid number
-  if (validateNumber(num)) {
+const num = req.query.number;
+ 
+  if (!validateNumber(num)) {
     return res.status(400).json({
       number: num,
       error: true,
