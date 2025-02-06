@@ -6,6 +6,7 @@ This is a backend service for HNG_12 project. It is built with **Node.js** and *
 - CORS enabled
 - Axios enabled
 - Nodemon enabled
+- Compression enabled
 - Returns JavaScript Object Notation(JSON) response
 
 ---
