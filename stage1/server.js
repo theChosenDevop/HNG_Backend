@@ -13,9 +13,12 @@ const cache = new Map();
 app.get("/api/classify-number", async (req, res) => {
   const start = Date.now();
 
+  const validateNumber = (num) => {
+    return /^-?\d+$/.test(num) && Number.isSafeInteger(Number(num));
+  }
   const num = req.query.number;
   //  check if the query parameter is a valid number
-  if (!num || !/^-?(0|[1-9]\d*)$/.test(num)) {
+  if (!validateNumber(num)) {
     return res.status(400).json({
       number: "alphabet",
       error: true,
