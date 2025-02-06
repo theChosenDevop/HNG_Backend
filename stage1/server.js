@@ -14,17 +14,15 @@ app.get("/api/classify-number", async (req, res) => {
   const start = Date.now();
 
   const validateNumber = (num) => {
-    if (typeof num !== "string" || num.trim() === "") return false;
-    if (!/^-?\d+$/.test(num)) return false;
-  const parsedNum = Number(num);
-  return Number.isSafeInteger(parsedNum);
+    if (num === undefined || num.trim() === "" || num === null) return false;
+    if (!/^-?\d+$/.test(num.trim())) return false;
   }
-  
+
   const num = req.query.number;
   //  check if the query parameter is a valid number
-  if (!validateNumber(num)) {
+  if (validateNumber(num)) {
     return res.status(400).json({
-      number: "alphabet",
+      number: num,
       error: true,
     });
   }
@@ -99,7 +97,8 @@ app.get("/api/classify-number", async (req, res) => {
   const getFunFact = async (number) => {
     if (cache.has(number)) return cache.get(number);
     try {
-      const response = await axios.get(`http://numbersapi.com/${number}/math`);
+      const num = Math.abs(number);
+      const response = await axios.get(`http://numbersapi.com/${num}/math`);
       cache.set(number, response.data);
       return response.data;
     } catch (error) {
@@ -110,11 +109,11 @@ app.get("/api/classify-number", async (req, res) => {
   const funFact = await getFunFact(number);
 
   const armstrongNumbers = [
-    153, 370, 371, 407, 1634, 8208, 9474, 54748, 92727, 93084, 548834,
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 153, 370, 371, 407, 1634, 8208, 9474, 54748, 92727, 93084, 548834,
   ];
 
   // const armstrongNumBool = armstrongNumbers.some((n) => n === number);
-  const armstrongNumBool = armstrongNumbers.includes(number);
+  const armstrongNumBool = armstrongNumbers.includes(Math.abs(number));
 
   //   parity check for even or odd
   const parity = number % 2 === 0 ? "even" : "odd";
