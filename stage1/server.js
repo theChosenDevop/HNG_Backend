@@ -14,8 +14,12 @@ app.get("/api/classify-number", async (req, res) => {
   const start = Date.now();
 
   const validateNumber = (num) => {
-    return /^-?\d+$/.test(num) && Number.isSafeInteger(Number(num));
+    if (typeof num !== "string" || num.trim() === "") return false;
+    if (!/^-?\d+$/.test(num)) return false;
+  const parsedNum = Number(num);
+  return Number.isSafeInteger(parsedNum);
   }
+  
   const num = req.query.number;
   //  check if the query parameter is a valid number
   if (!validateNumber(num)) {
